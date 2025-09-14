@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎯 Advanced Fake News Detector</title>
+
+    <!-- External Libraries -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Local Stylesheets -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- Theme Toggle Button -->
+    <button
+      class="theme-toggle"
+      onclick="toggleTheme()"
+      title="Toggle Dark Mode"
+    >
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Header Section -->
+      <header class="header">
+        <h1><i class="fas fa-shield-alt"></i> Advanced Fake News Detector</h1>
+        <div class="header-subtitle">
+          AI-powered news verification using transformer models and advanced NLP
+          features
+        </div>
+      </header>
+
+      <!-- Navigation Tabs -->
+      <nav class="tabs">
+        <button class="tab active" onclick="switchTab('basic')">
+          <i class="fas fa-search"></i> Basic Detection
+        </button>
+        <button class="tab" onclick="switchTab('enhanced')">
+          <i class="fas fa-brain"></i> Enhanced Analysis
+        </button>
+        <button class="tab" onclick="switchTab('features')">
+          <i class="fas fa-microscope"></i> Feature Analysis
+        </button>
+      </nav>
+
+      <!-- Basic Detection Tab -->
+      <div class="tab-content active" id="basic-tab">
+        <div class="model-info" id="model-grid"></div>
+
+        <div class="samples-section">
+          <div class="samples-title">Quick Test Samples</div>
+          <button class="btn btn-secondary" onclick="loadSample('fake')">
+            <i class="fas fa-exclamation-triangle"></i> Load Fake Sample
+          </button>
+          <button class="btn btn-secondary" onclick="loadSample('real')">
+            <i class="fas fa-check-circle"></i> Load Real Sample
+          </button>
+        </div>
+
+        <div class="form-group">
+          <label for="basic-text">
+            <i class="fas fa-newspaper"></i> Article Text
+          </label>
+          <textarea
+            id="basic-text"
+            placeholder="Paste the news article text here for analysis..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="basic-model">
+            <i class="fas fa-robot"></i> Select Model
+          </label>
+          <select id="basic-model"></select>
+        </div>
+
+        <button class="btn" onclick="predictBasic()">
+          <i class="fas fa-analytics"></i> Analyze Article
+        </button>
+        <div id="basic-result"></div>
+      </div>
+
+      <!-- Enhanced Analysis Tab -->
+      <div class="tab-content" id="enhanced-tab">
+        <div class="input-grid">
+          <div class="form-group">
+            <label for="enhanced-title">
+              <i class="fas fa-heading"></i> Article Title
+            </label>
+            <input
+              type="text"
+              id="enhanced-title"
+              placeholder="Article headline..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="enhanced-source">
+              <i class="fas fa-globe"></i> Source Domain
+            </label>
+            <input
+              type="text"
+              id="enhanced-source"
+              placeholder="e.g., cnn.com, reuters.com"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="enhanced-url">
+            <i class="fas fa-link"></i> URL (Optional)
+          </label>
+          <input type="url" id="enhanced-url" placeholder="https://..." />
+        </div>
+
+        <div class="form-group">
+          <label for="enhanced-text">
+            <i class="fas fa-file-alt"></i> Article Text
+          </label>
+          <textarea
+            id="enhanced-text"
+            placeholder="Full article content for comprehensive analysis..."
+          ></textarea>
+        </div>
+
+        <button class="btn" onclick="predictEnhanced()">
+          <i class="fas fa-brain"></i> Enhanced Analysis
+        </button>
+        <div id="enhanced-result"></div>
+      </div>
+
+      <!-- Feature Analysis Tab -->
+      <div class="tab-content" id="features-tab">
+        <div class="input-grid">
+          <div class="form-group">
+            <label for="feature-title">
+              <i class="fas fa-heading"></i> Title
+            </label>
+            <input
+              type="text"
+              id="feature-title"
+              placeholder="Article title..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="feature-source">
+              <i class="fas fa-globe"></i> Source
+            </label>
+            <input
+              type="text"
+              id="feature-source"
+              placeholder="Source domain..."
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="feature-text">
+            <i class="fas fa-file-text"></i> Text Content
+          </label>
+          <textarea
+            id="feature-text"
+            placeholder="Text to analyze in detail..."
+          ></textarea>
+        </div>
+
+        <button class="btn" onclick="analyzeFeatures()">
+          <i class="fas fa-microscope"></i> Extract Features
+        </button>
+        <div id="features-result"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Advanced Fake News Detector. Built with AI and ❤️</p>
+        <div class="footer-links">
+          <span>Powered by: TensorFlow • Transformers • Flask</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
