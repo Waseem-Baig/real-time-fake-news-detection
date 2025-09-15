@@ -166,19 +166,27 @@ body {
 
 /* ===== Model Grid ===== */
 .model-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
   margin-bottom: 2rem;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+  align-items: stretch !important;
 }
 
 .model-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  padding: 1.5rem;
+  padding: 2rem !important;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  flex: 1 !important;
+  display: block !important;
+  max-width: auto !important;
+  text-align: center;
 }
 
 .model-card:hover {
@@ -189,14 +197,14 @@ body {
 .model-card h3 {
   color: var(--primary-color);
   margin-bottom: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
 .model-card p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 /* ===== Samples Section ===== */
@@ -254,14 +262,17 @@ input,
 textarea,
 select {
   width: 100%;
-  padding: 0.875rem;
+  padding: 1rem 1.25rem;
   border: 2px solid var(--border-color);
-  border-radius: var(--border-radius);
+  border-radius: 12px;
   background: var(--card-bg);
   color: var(--text-primary);
   font-size: 1rem;
-  transition: var(--transition);
+  font-weight: 400;
+  transition: all 0.3s ease;
   resize: vertical;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 input:focus,
@@ -269,12 +280,21 @@ textarea:focus,
 select:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15), 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 textarea {
-  min-height: 120px;
+  min-height: 140px;
   font-family: inherit;
+  line-height: 1.6;
 }
 
 /* ===== Button Styles ===== */
@@ -447,9 +467,8 @@ textarea {
 .footer {
   background: var(--card-bg);
   border-top: 1px solid var(--border-color);
-  padding: 2rem 0;
+  padding: 3rem 0 1.5rem 0;
   margin-top: 3rem;
-  text-align: center;
 }
 
 .footer-content {
@@ -458,14 +477,54 @@ textarea {
   padding: 0 20px;
 }
 
-.footer-content p {
+.footer-main {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.footer-main h4 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.footer-main p {
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
 }
 
-.footer-links {
-  font-size: 0.9rem;
+.footer-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-section h5 {
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.footer-section p {
   color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 /* ===== Animations ===== */
@@ -552,8 +611,9 @@ textarea {
   }
 
   .model-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
   }
 
   .features-grid {
@@ -571,6 +631,12 @@ textarea {
 @media (max-width: 480px) {
   .header {
     padding: 1rem;
+  }
+
+  .model-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.75rem !important;
   }
 
   .header h1 {

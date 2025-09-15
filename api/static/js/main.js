@@ -72,6 +72,7 @@ function populateModelSelect() {
 
 function displayModelGrid() {
   const grid = document.getElementById("model-grid");
+  grid.className = "model-grid"; // Add the CSS class
   grid.innerHTML = "";
 
   if (availableModels.length === 0) {
